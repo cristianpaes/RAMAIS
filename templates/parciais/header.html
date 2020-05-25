@@ -1,0 +1,48 @@
+{% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel= "stylesheet" type="text/css" href= "{% static '/bootstrap/css/bootstrap.min.css' %}" >
+      <link rel= "stylesheet" type="text/css" href= "{% static '/style.css' %}" >
+
+          <title>RAMAIS</title>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand" href="/">
+                <img src="{% static 'img/telefone.png' %}" width="90" height="70">
+              </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Ramais</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/emails">Email</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/empresas">Empresa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">Administrador</a>
+              </li>
+
+
+               {% if request.user.is_authenticated %}
+                  <li class="nav-item active">
+                    <a class="nav-link">Olá, {{ request.user.first_name }}<span class="sr-only">(current)</span></a>
+                  <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
+               {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                  </li>
+               {% endif %}
+                  </li>
+
+
+
+            </ul>
+          </div>
+        </nav>

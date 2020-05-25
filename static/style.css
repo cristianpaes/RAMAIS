@@ -1,0 +1,81 @@
+.navbar {
+    background-color: #ffffff;
+}
+
+.table .claro th {
+    color: #ffffff;
+    background-color: #666868;
+    border-color: #97a0a8;
+}
+
+.table {
+    text-align: center;
+}
+
+.center{
+    text-align: center;
+    background-color: #F2F2F2;
+    align-items: center;
+}
+
+.lista_ramais{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: #F2F2F2;
+    text-align: center;
+    padding: 5px;
+    margin: center;
+}
+
+.page-footer{
+    background-color: #FAFAFA;
+    color: #666868;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+.bgcolor{
+    background-color: #F2F2F2;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 8.00rem;
+}
+
+.bgcolor_cad{
+    background-color: #F2F2F2;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.00rem;
+}
+
+.error{
+    color: red;
+}
+
+.lista{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: #F2F2F2;
+    text-align: center;
+    padding: 5px;
+    margin: center;
+ }
+
+ .botao_add{
+    background-color: #F2F2F2;
+    padding: 5px;
+}

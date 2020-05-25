@@ -1,0 +1,70 @@
+{% extends "parciais/base.html" %}
+{% block content %}
+        <nav class="navbar center">
+           <form class="form-inline" method="GET">
+                <input class="form-control mr-sm-2 "type="text" name="search" id="buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Consulta</button>
+           </form>
+       </nav>
+            <section id="lista_ramais">
+                <div class="container-fluid lista_ramais">
+                    <p>LISTA DE RAMAIS</p>
+                </div>
+            </section>
+        <section class="container-fluid margin">
+            <div class="table-responsive-lg">
+                <table class="table table-xl table-striped">
+                    <thead class="claro" align="center">
+                        <tr>
+                        <th scope="col">RAMAL</th>
+                        <th scope="col">RESPONSAVÉL</th>
+                        <th scope="col">SETOR</th>
+                        <th scope="col">EMPRESA</th>
+                        {% if request.user.is_authenticated %}
+                            <th scope="col">EDIÇÃO
+                              <a href="edicao/">
+                                <button type="button" class="btn btn-light">ADICIONAR</button>
+                              </a>
+                            </th>
+                        {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                           {% for i in ramais %}
+                                <tr>
+                                <th>{{i.ramal}}</th>
+                                <td>{{ i.nome_resp | upper }}</td>
+                                <td>{{ i.setor_ramais | upper }}</td>
+                                <td>{{ i.empresa_ramais }}</td>
+                                {% if request.user.is_authenticated %}
+                                     <td>
+                                        <a href="edicao/?id={{ i.id }}">
+                                         <button type="button" class="btn btn-warning">EDITAR</button>
+                                        </a>
+                                         <a href="/delete/{{ i.id }}">
+                                         <button type="button" class="btn btn-danger">EXCLUIR</button>
+                                        </a>
+                                     </td>
+                                {% endif %}
+                                </tr>
+                           {% endfor %}
+                      </tbody>
+                </table>
+                <nav aria-label="Navegação de página exemplo">
+                    <ul class="pagination">
+                      {% for pagina in ramais.paginator.page_range %}
+                        {% if ramais.number == pagina %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% else %}
+                           <li class="page-item"><a class="page-link" href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div align="right">
+                <button type="button" onclick="window.print()" class="btn btn-outline-secondary">Imprimir</button>
+            </div>
+        </section>
+{% endblock %}
+
