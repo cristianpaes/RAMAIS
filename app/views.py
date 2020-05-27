@@ -74,10 +74,11 @@ def submit_edicao(request):
         ramal = request.POST.get('ramal')
         responsavel= request.POST.get('responsavel')
         email=request.POST.get('email')
-        #setor=request.POST.get('setor')
-        #empresa=request.POST.get('empresa')
-        id_setor = Setores.objects.filter(pk='pk_setor')
-        id_empresa = Empresas.objects.filter(pk='pk_empresa')
+        setor=request.POST.get('setor')
+        empresa=request.POST.get('empresa')
+        id_setor = Setores.objects.get(id=setor)
+        id_empresa = Empresas.objects.get(id=empresa)
+
         Ramais.objects.create(ramal=ramal,
                               nome_resp=responsavel,
                               email=email,

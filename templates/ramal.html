@@ -31,7 +31,7 @@
                       <label >Setor:</label>
                       <select id="inputState" name="setor"  class="form-control">
                         {% for s in setores %}
-                            <option value="{{ s.setor }}" id="pk_setor">{{ s.setor }}</option>
+                            <option value="{{ s.id }}" name="pk_setor">{{ s.setor }}</option>
                         {% endfor %}
                       </select>
                         <a href="/ramais/edicao/setor/">
@@ -44,7 +44,7 @@
                       <label for="inputState">Empresa:</label>
                       <select id="inputState01" name="empresa"  class="form-control">
                         {% for e in empresas %}
-                            <option value="{{ e.nome_emp }}" id="pk_empresa">{{ e.nome_emp }}</option>
+                            <option value="{{ e.id }}" name="pk_empresa">{{ e.nome_emp }}</option>
                         {% endfor %}
                       </select>
                     </div>

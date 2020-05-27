@@ -1,4 +1,6 @@
 *.pyc
 .idea
-venv
+venv/
+venv3/
 db.sqlite3
+app/
