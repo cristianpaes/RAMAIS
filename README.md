@@ -33,6 +33,6 @@ Com o super usuário criado basta rodar o projeto.
 python manage.py runserver
 ```
 
-![Tela de Visualização](http://imgbox.com/p0tKq410 "Tela de Visualização")
+![Tela de Visualização](https://imgur.com/1uqLjRv "Tela de Visualização")
 
-![Tela de Edição](http://imgbox.com/hafSCRSQ "Tela de Edição")
+![Tela de Edição](https://imgur.com/I5PmJsN "Tela de Edição")
