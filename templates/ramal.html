@@ -10,28 +10,31 @@
         <p>EDIÇÃO RAMAL</p>
     </div>
 </section>
+
 <section class="container w-auto bgcolor_cad">
         <form action="submit" method="POST">{% csrf_token %}
-          <div class="form-row">
+         <! (verificar) input type="number" name="id_ramal" value="{{ ramais.id }}" hidden>
+           <div class="form-row">
                 <div class="form-group col-md-4">
+
                   <label>Ramal:</label>
-                  <input type="number" name="ramal" class="form-control"  >
+                  <input type="number" name="ramal" class="form-control" value="{{ i.ramal  }}"  >
                 </div>
                 <div class=" col-md-4">
                   <label>Responsável:</label>
-                  <input type="text" name="responsavel"  class="form-control"  >
+                  <input type="text" name="responsavel"  class="form-control" value="{{ i.nome_resp }}" >
                 </div>
           </div>
             <div class="form-row">
                   <div class="col-md-4">
                     <label>Email:</label>
-                    <input type="email" name="email"  class="form-control">
+                    <input type="email" name="email"  class="form-control" value="{{ i.emal }}">
                   </div>
                     <div class="col-md-4">
                       <label >Setor:</label>
-                      <select id="inputState" name="setor"  class="form-control">
+                      <select id="inputState" name="setor" class="form-control">
                         {% for s in setores %}
-                            <option value="{{ s.setor }}" id="pk_setor">{{ s.setor }}</option>
+                            <option  value="{{ s.id }}" name="pk_setor">{{ s.setor }}</option>
                         {% endfor %}
                       </select>
                         <a href="/ramais/edicao/setor/">
@@ -44,7 +47,7 @@
                       <label for="inputState">Empresa:</label>
                       <select id="inputState01" name="empresa"  class="form-control">
                         {% for e in empresas %}
-                            <option value="{{ e.nome_emp }}" id="pk_empresa">{{ e.nome_emp }}</option>
+                            <option  value="{{ e.id }}" name="pk_empresa">{{ e.nome_emp }}</option>
                         {% endfor %}
                       </select>
                     </div>
