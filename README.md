@@ -1,3 +1,4 @@
+### Sobre
 # RAMAIS
 Sistema em desenvolvimento baseado numa necessidade na empresa de controlar os ramais e ter as informações de seus colaboradores.
 
@@ -32,7 +33,9 @@ Com o super usuário criado basta rodar o projeto.
 ```python
 python manage.py runserver
 ```
+## Tela de Visualização
+![Tela de Visualização](https://i.imgur.com/1uqLjRv.png "Tela de Visualização")
+## Tela de Edição
+![Tela de Edição](https://i.imgur.com/I5PmJsN.png "Tela de Edição")
 
-![Tela de Visualização](https://imgur.com/1uqLjRv "Tela de Visualização")
 
-![Tela de Edição](https://imgur.com/I5PmJsN "Tela de Edição")
