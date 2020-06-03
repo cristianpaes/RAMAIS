@@ -1,6 +1,6 @@
 # Sobre
 # RAMAIS
-Sistema em desenvolvimento baseado numa necessidade na empresa de controlar os ramais e ter as informações de seus colaboradores.
+É um projeto desenvolvido numa necessidade de ter informações sobre Empresas, ramais, emails e colaboradores.
 
 Para testar: 
 https://app-ramais.herokuapp.com/ramais/
