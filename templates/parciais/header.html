@@ -25,24 +25,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="/empresas">Empresa</a>
               </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/api" style="color: red">API</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin">Administrador</a>
               </li>
 
 
-               {% if request.user.is_authenticated %}
-                  <li class="nav-item active">
-                    <a class="nav-link">Olá, {{ request.user.first_name }}<span class="sr-only">(current)</span></a>
-                  <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
-               {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                  </li>
-               {% endif %}
-                  </li>
-
-
-
+                       {% if request.user.is_authenticated %}
+                          <li class="nav-item active">
+                            <a class="nav-link">Olá, {{ request.user.first_name }}<span class="sr-only">(current)</span></a>
+                          <li class="nav-item active"><a href="/logout" class="nav-link">Logout</a></li>
+                       {% else %}
+                          <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                          </li>
+                       {% endif %}
             </ul>
           </div>
         </nav>

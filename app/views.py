@@ -4,7 +4,13 @@ from django.contrib.auth import authenticate,login, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
-# Create your views here.
+from rest_framework import viewsets
+from app.serializers import ramaisSerializer
+
+
+class ramaisViewSet(viewsets.ModelViewSet):
+    queryset = Ramais.objects.all()
+    serializer_class = ramaisSerializer
 
 
 def lista_ramais(request):
@@ -64,25 +70,27 @@ def submit_login(request):
 @login_required(login_url='/login/')
 def ed_ramal(request):
     # <--------- Verificar o erro ao editar ------>
-    # id_ramal = request.GET.get('id')
-    # id_setor = Ramais.objects.filter(id=id_ramal).values('setor_ramais')
-    # id_empresa = Ramais.objects.filter(id=id_ramal).values('empresa_ramais')
-    # print(id_ramal)
-    # print(id_setor)
-    # print(type(id_setor))
-    # print(id_empresa)
-    # ramal = Ramais.objects.get(id=id_ramal)
-    # setor = Setores.objects.get(id=id_setor)
-    # empresa= Empresas.objects.get(id=id_empresa)
-    #
+    id_ramal = request.GET.get('id')
+    id_setor = Ramais.objects.filter(id=id_ramal).values('setor_ramais')
+    id_empresa = Ramais.objects.filter(id=id_ramal).values('empresa_ramais')
+    print(id_ramal)
+    print(id_setor)
+    print(type(id_setor))
+    print(id_empresa)
+    if id_ramal:
+        ramal = Ramais.objects.get(id=id_ramal)
+        setor = Setores.objects.get(id=id_setor)
+        empresa= Empresas.objects.get(id=id_empresa)
+        dados = {'empresas': empresa, 'setores': setor, 'ramal':ramal}
     # print(setor)
     #
     # dados = {'empresas': empresa,'setores':setor, 'ramal':ramal}
     # print(dados)
     # return render(request, 'ramal.html', dados)
-    empresa = Empresas.objects.all()
-    setor = Setores.objects.all()
-    dados = {'empresas': empresa, 'setores': setor}
+    else:
+        empresa = Empresas.objects.all()
+        setor = Setores.objects.all()
+        dados = {'empresas': empresa, 'setores': setor}
     return render(request, 'ramal.html', dados)
 
 @login_required(login_url='/login/')
@@ -130,3 +138,4 @@ def delete_ramal(request,id_ramal):
 def delete_email(request,id_ramal):
     Ramais.objects.filter(id=id_ramal).delete()
     return redirect('/emails')
+

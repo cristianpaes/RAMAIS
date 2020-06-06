@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -43,5 +43,8 @@ class Ramais(models.Model):
         db_table = 'ramais'
 
     def __str__(self):
-        return self.ramal
+        return self.ramal + str(self.setor_ramais)+ str(self.empresa_ramais)
+
+    def get_data_criacao(self):
+        return self.data_criacao.strftime('%d/%m/%Y')
 

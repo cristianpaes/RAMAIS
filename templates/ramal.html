@@ -7,13 +7,13 @@
 
 <section>
     <div class="container w-auto lista">
-        <p>EDIÇÃO RAMAL</p>
+        <p>RAMAL</p>
     </div>
 </section>
 
 <section class="container w-auto bgcolor_cad">
         <form action="submit" method="POST">{% csrf_token %}
-         <! (verificar) input type="number" name="id_ramal" value="{{ ramais.id }}" hidden>
+         <input type="number" name="id_ramal" value="{{ i.id }}">
            <div class="form-row">
                 <div class="form-group col-md-4">
 
