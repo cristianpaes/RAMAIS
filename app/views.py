@@ -69,29 +69,22 @@ def submit_login(request):
 
 @login_required(login_url='/login/')
 def ed_ramal(request):
-    # <--------- Verificar o erro ao editar ------>
+    template_name = 'ramal.html'
+    dados = {}
     id_ramal = request.GET.get('id')
     id_setor = Ramais.objects.filter(id=id_ramal).values('setor_ramais')
     id_empresa = Ramais.objects.filter(id=id_ramal).values('empresa_ramais')
-    print(id_ramal)
-    print(id_setor)
-    print(type(id_setor))
-    print(id_empresa)
+
     if id_ramal:
         ramal = Ramais.objects.get(id=id_ramal)
-        setor = Setores.objects.get(id=id_setor)
-        empresa= Empresas.objects.get(id=id_empresa)
-        dados = {'empresas': empresa, 'setores': setor, 'ramal':ramal}
-    # print(setor)
-    #
-    # dados = {'empresas': empresa,'setores':setor, 'ramal':ramal}
-    # print(dados)
-    # return render(request, 'ramal.html', dados)
+        setor = Setores.objects.filter(id=id_setor[0]['setor_ramais'])
+        empresa= Empresas.objects.filter(id=id_empresa[0]['empresa_ramais'])
+        dados = { 'ramais': ramal, 'setores': setor, 'empresas': empresa}
     else:
         empresa = Empresas.objects.all()
         setor = Setores.objects.all()
         dados = {'empresas': empresa, 'setores': setor}
-    return render(request, 'ramal.html', dados)
+    return render(request, template_name, dados)
 
 @login_required(login_url='/login/')
 def submit_edicao(request):
@@ -103,14 +96,16 @@ def submit_edicao(request):
         empresa=request.POST.get('empresa')
         id_setor = Setores.objects.get(id=setor)
         id_empresa = Empresas.objects.get(id=empresa)
-        #if id_ramal:
-          #  Ramais.objects.filter(id=id_ramal).update(ramal=ramal,
-          #                                            nome_resp=responsavel,
-          #                                            email=email,
-          #                                            setor_ramais=id_setor,
-          #                                            empresa_ramais=id_empresa)
-        #else:
-        Ramais.objects.create(ramal=ramal,
+        id_ramal = request.POST.get('id_ramal')
+        print(id_ramal)
+        if id_ramal:
+          Ramais.objects.filter(id=id_ramal).update(ramal=ramal,
+                                                      nome_resp=responsavel,
+                                                      email=email,
+                                                      setor_ramais=id_setor,
+                                                      empresa_ramais=id_empresa)
+        else:
+            Ramais.objects.create(ramal=ramal,
                                   nome_resp=responsavel,
                                   email=email,
                                   setor_ramais=id_setor,

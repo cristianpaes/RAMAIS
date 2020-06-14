@@ -13,22 +13,22 @@
 
 <section class="container w-auto bgcolor_cad">
         <form action="submit" method="POST">{% csrf_token %}
-         <input type="number" name="id_ramal" value="{{ i.id }}">
+         <input type="number" name="id_ramal" value="{{ ramais.id }}" hidden>
            <div class="form-row">
                 <div class="form-group col-md-4">
 
                   <label>Ramal:</label>
-                  <input type="number" name="ramal" class="form-control" value="{{ i.ramal  }}"  >
+                  <input type="number" name="ramal" class="form-control" value="{{ ramais.ramal }}"  >
                 </div>
                 <div class=" col-md-4">
                   <label>Responsável:</label>
-                  <input type="text" name="responsavel"  class="form-control" value="{{ i.nome_resp }}" >
+                  <input type="text" name="responsavel"  class="form-control" value="{{ ramais.nome_resp }}" >
                 </div>
           </div>
             <div class="form-row">
                   <div class="col-md-4">
                     <label>Email:</label>
-                    <input type="email" name="email"  class="form-control" value="{{ i.emal }}">
+                    <input type="email" name="email"  class="form-control" value="{{ ramais.email }}">
                   </div>
                     <div class="col-md-4">
                       <label >Setor:</label>
