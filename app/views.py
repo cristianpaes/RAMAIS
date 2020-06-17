@@ -19,7 +19,8 @@ def lista_ramais(request):
     '''
     busca = request.GET.get('search')
     if busca:
-        ramal = Ramais.objects.filter(ramal__icontains = busca) | Ramais.objects.filter(nome_resp__icontains = busca)
+        name_set = Setores.objects.filter(setor__icontains=busca)
+        ramal = Ramais.objects.filter(ramal__icontains = busca) | Ramais.objects.filter(nome_resp__icontains = busca) | Ramais.objects.filter(setor_ramais__in=name_set)
     else:
         ramal = Ramais.objects.all()
 
@@ -33,8 +34,14 @@ def lista_emails(request):
        Realizando a busca e filtrando na tabela
     '''
     busca = request.GET.get('search')
+
+
     if busca:
-        email = Ramais.objects.filter(nome_resp__icontains = busca)
+        name_set = Setores.objects.filter(setor__icontains=busca)
+        #print(name_set.query)
+        #print(name_set)
+        email = Ramais.objects.filter(nome_resp__icontains = busca) | Ramais.objects.filter(setor_ramais__in=name_set)
+
     else:
         email = Ramais.objects.all()
 
@@ -74,11 +81,12 @@ def ed_ramal(request):
     id_ramal = request.GET.get('id')
     id_setor = Ramais.objects.filter(id=id_ramal).values('setor_ramais')
     id_empresa = Ramais.objects.filter(id=id_ramal).values('empresa_ramais')
-
+    # print(id_setor.query)
     if id_ramal:
         ramal = Ramais.objects.get(id=id_ramal)
         setor = Setores.objects.filter(id=id_setor[0]['setor_ramais'])
         empresa= Empresas.objects.filter(id=id_empresa[0]['empresa_ramais'])
+        # print(setor.query)
         dados = { 'ramais': ramal, 'setores': setor, 'empresas': empresa}
     else:
         empresa = Empresas.objects.all()

@@ -24,6 +24,8 @@ urlpatterns = [
     path('ramais/', views.lista_ramais),
     path('delete/<int:id_ramal>',views.delete_ramal),
     path('emails/', views.lista_emails),
+    path('emails/edicao/', views.ed_ramal),
+    path('emails/edicao/submit', views.submit_edicao),
     path('emails/delete/<int:id_ramal>',views.delete_email),
     path('empresas/', views.lista_empresas),
     path('login/', views.login_edicao),

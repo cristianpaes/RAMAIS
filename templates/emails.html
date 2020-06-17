@@ -38,7 +38,7 @@
                             <td>{{ i.empresa_ramais }}</td>
                             {% if request.user.is_authenticated %}
                                      <td>
-                                        <a href="ramais/edicao">
+                                        <a href="edicao/?id={{ i.id }}">
                                          <button type="button" class="btn btn-warning">EDITAR</button>
                                         </a>
                                          <a href="delete/{{ i.id }}">
