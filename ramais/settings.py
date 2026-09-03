@@ -16,19 +16,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get(
     "DJANGO_SECRET_KEY",
-    "django-insecure-development-key-change-in-production"
+    "f@+n=_n_zqkk%=6ady4czzvw(i9tv&4*fngxs*qq%igh4&v!ln"
 )
 
 DEBUG = os.environ.get(
     "DJANGO_DEBUG",
-    "True"
+    "False"
 ).lower() == "true"
 
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get(
         "DJANGO_ALLOWED_HOSTS",
-        "127.0.0.1,localhost"
+        "ramais.onrender.com"
     ).split(",")
     if host.strip()
 ]
