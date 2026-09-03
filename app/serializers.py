@@ -1,9 +1,9 @@
-from app.models import Ramais,Empresas,Setores
-from rest_framework import  serializers
+from rest_framework import serializers
 
-class ramaisSerializer(serializers.ModelSerializer):
+from app.models import Ramais
 
+
+class RamaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ramais
-        fields = '__all__'
-
+        fields = "__all__"

@@ -1,9 +1,8 @@
 {% extends "parciais/base.html" %}
 
 {% block content %}
+
 {% load static %}
-	<link rel= "stylesheet" type="text/css" href= "{% static '/bootstrap/css/bootstrap.min.css' %}" >
-	<link rel= "stylesheet" type="text/css" href= "{% static '/style.css' %}" >
 
 <section>
     <div class="container w-auto lista">
@@ -12,54 +11,153 @@
 </section>
 
 <section class="container w-auto bgcolor_cad">
-        <form action="submit" method="POST">{% csrf_token %}
-         <input type="number" name="id_ramal" value="{{ ramais.id }}" hidden>
-           <div class="form-row">
-                <div class="form-group col-md-4">
 
-                  <label>Ramal:</label>
-                  <input type="number" name="ramal" class="form-control" value="{{ ramais.ramal }}"  >
-                </div>
-                <div class=" col-md-4">
-                  <label>Responsável:</label>
-                  <input type="text" name="responsavel"  class="form-control" value="{{ ramais.nome_resp }}" >
-                </div>
-          </div>
-            <div class="form-row">
-                  <div class="col-md-4">
-                    <label>Email:</label>
-                    <input type="email" name="email"  class="form-control" value="{{ ramais.email }}">
-                  </div>
-                    <div class="col-md-4">
-                      <label >Setor:</label>
-                      <select id="inputState" name="setor" class="form-control">
-                        {% for s in setores %}
-                            <option  value="{{ s.id }}" name="pk_setor">{{ s.setor }}</option>
-                        {% endfor %}
-                      </select>
-                        <a href="/ramais/edicao/setor/">
-                            <button type="button" class="btn btn-info">ADICIONAR</button>
-                        </a>
-                    </div>
+    <form
+        action="{% url 'submit_edicao' %}"
+        method="POST"
+    >
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="id_ramal"
+            value="{{ ramais.id }}"
+        >
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="ramal">Ramal:</label>
+
+                <input
+                    type="number"
+                    id="ramal"
+                    name="ramal"
+                    class="form-control"
+                    value="{{ ramais.ramal }}"
+                    required
+                >
             </div>
-            <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label for="inputState">Empresa:</label>
-                      <select id="inputState01" name="empresa"  class="form-control">
-                        {% for e in empresas %}
-                            <option  value="{{ e.id }}" name="pk_empresa">{{ e.nome_emp }}</option>
-                        {% endfor %}
-                      </select>
-                    </div>
+
+            <div class="form-group col-md-4">
+                <label for="responsavel">Responsável:</label>
+
+                <input
+                    type="text"
+                    id="responsavel"
+                    name="responsavel"
+                    class="form-control"
+                    value="{{ ramais.nome_resp }}"
+                    required
+                >
             </div>
-            <button type="submit" class="btn btn-success">SALVAR</button>
-            <a href="/ramais/">
-                <button type="button" class="btn btn-danger">CANCELAR</button>
-            </a>
-        </form>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="email">Email:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    value="{{ ramais.email }}"
+                    required
+                >
+            </div>
+
+            <div class="form-group col-md-4">
+
+                <label for="setor">Setor:</label>
+
+                <select
+                    id="setor"
+                    name="setor"
+                    class="form-control"
+                    required
+                >
+
+                    <option value="">
+                        Selecione o setor
+                    </option>
+
+                    {% for s in setores %}
+
+                        <option
+                            value="{{ s.id }}"
+                            {% if s.id == ramais.setor_ramais_id %}selected{% endif %}
+                        >
+                            {{ s.setor }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <a
+                    href="{% url 'add_setor' %}"
+                    class="btn btn-info mt-2"
+                >
+                    ADICIONAR SETOR
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+
+                <label for="empresa">Empresa:</label>
+
+                <select
+                    id="empresa"
+                    name="empresa"
+                    class="form-control"
+                    required
+                >
+
+                    <option value="">
+                        Selecione a empresa
+                    </option>
+
+                    {% for e in empresas %}
+
+                        <option
+                            value="{{ e.id }}"
+                            {% if e.id == ramais.empresa_ramais_id %}selected{% endif %}
+                        >
+                            {{ e.nome_emp }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-success"
+        >
+            SALVAR
+        </button>
+
+        <a
+            href="{% url 'lista_ramais' %}"
+            class="btn btn-danger"
+        >
+            CANCELAR
+        </a>
+
+    </form>
+
 </section>
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-{% endblock %}
 
+{% endblock %}

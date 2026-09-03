@@ -1,1 +1,1 @@
-web: gunicorn ramais.wsgi
+web: gunicorn ramais.wsgi:application
