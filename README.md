@@ -38,105 +38,97 @@ https://ramais.onrender.com/
 
   
 
-***Tecnologias utilizadas:***
+## ***Tecnologias utilizadas:***
 
- - [ ] Python 3 
- - [ ] Django 6.1 
- - [ ] Django REST Framework 
- - [ ] PostgreSQL 
- - [ ] Neon
- - [ ] PostgreSQL
- - [ ] Render 
- - [ ] SQLite para desenvolvimento local
- - [ ] Django Authentication
- - [ ] HTML5 
- - [ ] CSS3 
- - [ ] WhiteNoise
- - [ ]  Gunicorn 
- - [ ] Git / GitHub
+ - Python 3 
+ - Django 6.1 
+ - Django REST Framework 
+ - PostgreSQL 
+ - Neon
+ - PostgreSQL
+ - Render 
+ - SQLite para desenvolvimento local
+ - Django Authentication
+ - HTML5 
+ - CSS3 
+ - WhiteNoise
+ - Gunicorn 
+ - Git / GitHub
 
-**Funcionalidades Consulta de Ramais**
-**Visualização dos ramais cadastrados**
+## **Funcionalidades Consulta de Ramais**
+### **Visualização dos ramais cadastrados**
 
-Nome do responsável
-Setor
-Empresa
-E-mail
-Número do ramal
-Data de criação
+* Nome do responsável
+* Setor
+* Empresa
+* E-mail
+* Número do ramal
+* Data de criação
 
-**Pesquisa**
-**Sistema de pesquisa para facilitar a localização de:**
+## **Pesquisa**
+### **Sistema de pesquisa para facilitar a localização de:**
 
-Ramais
-Colaboradores
-Setores
-Empresas
-E-mails
+ - Ramais 
+ - Colaboradores 
+ - Setores 
+ - Empresa
+ - E-mail
 
-**Empresas
-Cadastro e gerenciamento de empresas com:**
-Nome
-CNPJ
-Inscrição Estadual
-Telefone
-Endereço
-Número
-Complemento
-Bairro
-CEP
+## Empresas
+### Cadastro e gerenciamento de empresas com:
 
-**Setores
-Cadastro e gerenciamento de setores vinculados aos ramais.**
+ - Nome 
+ - CNPJ
+ - Inscrição Estadual
+ - Telefone
+ - Endereço
+ - Número
+ - Complemento
+ - Bairro
+ - CEP
+
+## Setores
+### Cadastro e gerenciamento de setores vinculados aos ramais.
 
 O sistema também possui validação para evitar o cadastro de setores duplicados.
  
-
-**Autenticação**
+## **Autenticação**
 
   As operações administrativas são protegidas por autenticação.
   
 Usuários não autenticados podem consultar as informações, enquanto as operações de alteração ficam restritas aos usuários autorizados.
 
-**API REST**
+## **API REST**
 O projeto possui uma API utilizando Django REST Framework.
 Endpoint:
 /api/
 
   
 
-**Modernização realizada**
+## **Modernização realizada**
 
 O projeto originalmente utilizava versões antigas do Django e dependências que estavam desatualizadas.
-Durante a modernização foram realizadas diversas melhorias.
+### Durante a modernização foram realizadas diversas melhorias.
 
-Atualização do Django
-Atualização da aplicação para:
-Django 6.1.1
-Além da atualização das principais dependências do projeto.
-Migração para PostgreSQL
+ **Atualização do Django**
+ -  Atualização da aplicação para: Django 6.1.1
+ - Além da atualização das principais dependências do projeto
+ - Migração para PostgreSQL
 
 A aplicação foi preparada para trabalhar com diferentes bancos de dados:
 
-    Desenvolvimento
-    
-    ↓
-    
-    SQLite
-    
-    ↓
-    
-    Produção
-    
-    ↓
-    
-    PostgreSQL
-    
-    ↓
-    
-    Neon
+   
 
-  
+     Desenvolvimento
+     ↓
+     SQLite
+     ↓
+     Produção
+     ↓
+     PostgreSQL
+     ↓
+     Neon
+
 
 Isso permite manter um ambiente simples para desenvolvimento local e utilizar um banco PostgreSQL em produção.
 
@@ -149,20 +141,14 @@ O projeto originalmente estava hospedado no Heroku.
 A aplicação foi migrada para o Render, permitindo manter o projeto disponível online utilizando infraestrutura cloud.
 
     GitHub
-    
     ↓
-    
     Render
-    
     ↓
-    
     Django
-    
     ↓
-    
     Neon PostgreSQL
 
-**Configuração de arquivos estáticos**
+## **Configuração de arquivos estáticos**
 
 
 Foi implementado WhiteNoise para gerenciamento dos arquivos estáticos em produção.
@@ -173,34 +159,23 @@ Também foi configurado o processo de:
 
   
 
-collectstatic
+- collectstatic durante o deploy.
 
   
 
-durante o deploy.
-
-  
-
-**Melhorias de segurança**
+## **Melhorias de segurança**
  
 
 Foram adicionadas configurações para ambiente de produção, incluindo:
 
-  
+ - Variáveis de ambiente 
+ - SECRET_KEY configurável
+ - ALLOWED_HOSTS
+ - CSRF_TRUSTED_ORIGINS
+ - Proteção contra MIME sniffing
+ - X_FRAME_OPTIONS
 
-Variáveis de ambiente
-
-SECRET_KEY configurável
-
-ALLOWED_HOSTS
-
-CSRF_TRUSTED_ORIGINS
-
-Proteção contra MIME sniffing
-
-X_FRAME_OPTIONS
-
-**Separação entre configuração local e produção**
+## **Separação entre configuração local e produção**
 
 **Criação automatizada do administrador**
 
@@ -210,7 +185,7 @@ Foi criado um comando Django personalizado:
 
   
 
-python manage.py create_admin
+ - python manage.py create_admin
 
   
 
@@ -218,28 +193,27 @@ Esse comando permite criar o superusuário utilizando variáveis de ambiente, ev
 
   
 
-**Deploy automatizado**
+## **Deploy automatizado**
 
   
 
 O processo de build do Render executa:
-
-  
-
-pip install -r requirements.txt
-
-python manage.py collectstatic --noinput
-
-python manage.py migrate
-
-python manage.py create_admin
-
-  
-
+```
+ pip install -r requirements.txt
+ ``` 
+```
+ python manage.py collectstatic --noinput
+```  
+```
+ python manage.py migrate
+```   
+```
+ python manage.py create_admin
+```
 Dessa forma, o ambiente é preparado automaticamente durante o deploy.
 
 
-  **Migrations**
+  ## **Migrations**
  
 
 As migrations do Django foram revisadas e atualizadas para refletir a estrutura atual dos modelos.
@@ -251,51 +225,26 @@ As migrations do Django foram revisadas e atualizadas para refletir a estrutura 
   
 
 Ter instalado Python3 e pip e Instalar o requirements do projeto.
-
-  
+ 
 
 ```
-
-  
-
 pip install -r requirements.txt
-
-  
-
 ```
-
-  
+ 
 
 Apos, rodar os comandos para criar o banco de dados.
-
-  
-
 ```
-
-  
-
 python manage.py makemigrations
-
-python manage.py migrate
-
-  
-
 ```
-
+```
+python manage.py migrate
+```
   
 
 Com o banco de dados criado crie o super usuário para administração do django. O mesmo irá pedir nome de usuário, senha e e-mail.
 
-  
-
 ```
-
-  
-
 python manage.py createsuperuser
-
-  
-
 ```
 
   
@@ -305,18 +254,11 @@ Com o super usuário criado basta rodar o projeto.
   
 
 ```
-
-  
-
 python manage.py runserver
-
-  
-
 ```
-
   
 
-**Objetivos do projeto**
+## **Objetivos do projeto**
 
   
 
@@ -324,34 +266,34 @@ O projeto foi desenvolvido com foco em:
 
   
 
-  - [ ] Organização das informações corporativas
+  - Organização das informações corporativas
        
-  - [ ]     Facilidade de consulta
+- Facilidade de consulta
        
-  - [ ]       Controle de acesso
+ -  Controle de acesso
        
-  - [ ]   CRUD completo
+  - CRUD completo
        
-  - [ ]   API REST
+  - API REST
        
-  - [ ]  Boas práticas de desenvolvimento Django
+  - Boas práticas de desenvolvimento Django
        
-  - [ ] Separação entre ambiente de desenvolvimento e produção
+  - Separação entre ambiente de desenvolvimento e produção
        
-  - [ ]  Utilização de PostgreSQL
+  - Utilização de PostgreSQL
        
-  - [ ] Deploy em cloud
+  - Deploy em cloud
        
-  - [ ] Segurança através de variáveis de ambiente
+  - Segurança através de variáveis de ambiente
        
-  - [ ] Manutenção e evolução de uma aplicação legada
+- Manutenção e evolução de uma aplicação legada
 
   
-**Autor**
+## **Autor**
 
   
 
-**Cristian Camargo**
+### **Cristian Camargo**
 Profissional de Tecnologia da Informação com experiência em desenvolvimento, bancos de dados, sistemas corporativos e administração de ambientes tecnológicos.
 
 🔗 Links
